@@ -1,4 +1,4 @@
-package misc;
+package debuggable;
 
 import java.io.IOException;
 import java.io.OutputStream;
