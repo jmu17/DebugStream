@@ -2,7 +2,7 @@
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
-import misc.DebugStream;
+import debuggable.DebugStream;
 import org.junit.After;
 import static org.junit.Assert.*;
 import org.junit.Before;
@@ -111,7 +111,4 @@ public class SimpleTest {
         assertTrue(ret.contains(Integer.toString(data_int)));
         assertFalse(ret.contains("\n"));
     }
-    
-    
-
 }
