@@ -45,9 +45,22 @@ public class SimpleTest {
         assertNotEquals(0, input.size());
     }
 
+    public static int countSubstrings(String big, String little) {
+        int count = 0;
+        int indexOf = 0;
+        do {
+            indexOf = big.indexOf(little, indexOf);
+            if(indexOf != -1){
+                count++;
+            }
+            indexOf++;
+        } while (indexOf != 0);
+        return count;
+    }
+
     public void checkPreamble(String ret) {
-        assertTrue(ret.contains("[DEBUG]"));
-        assertTrue(ret.contains("SimpleTest"));
+        assertEquals(1, countSubstrings(ret, "DEBUG"));
+        assertEquals(1, countSubstrings(ret, "SimpleTest"));
     }
 
     @Test
@@ -55,7 +68,7 @@ public class SimpleTest {
         dummy_output.println();
         String ret = input.toString();
         checkPreamble(ret);
-        assertTrue(ret.contains("\n"));
+        assertEquals(1, countSubstrings(ret, "\n"));
     }
 
     @Test
@@ -63,8 +76,8 @@ public class SimpleTest {
         dummy_output.println(data_string);
         String ret = input.toString();
         checkPreamble(ret);
-        assertTrue(ret.contains(data_string));
-        assertTrue(ret.contains("\n"));
+        assertEquals(1, countSubstrings(ret, data_string));
+        assertEquals(1, countSubstrings(ret, "\n"));
     }
 
     @Test
@@ -72,8 +85,8 @@ public class SimpleTest {
         dummy_output.print(data_string);
         String ret = input.toString();
         checkPreamble(ret);
-        assertTrue(ret.contains(data_string));
-        assertFalse(ret.contains("\n"));
+        assertEquals(1, countSubstrings(ret, data_string));
+        assertNotEquals(1, countSubstrings(ret, "\n"));
     }
 
     @Test
@@ -81,8 +94,8 @@ public class SimpleTest {
         dummy_output.print(data_string);
         String ret = input.toString();
         checkPreamble(ret);
-        assertTrue(ret.contains(data_string));
-        assertFalse(ret.contains("\n"));
+        assertEquals(1, countSubstrings(ret, data_string));
+        assertNotEquals(1, countSubstrings(ret, "\n"));
     }
 
     @Test
@@ -90,8 +103,8 @@ public class SimpleTest {
         dummy_output.println(data_int);
         String ret = input.toString();
         checkPreamble(ret);
-        assertTrue(ret.contains(Integer.toString(data_int)));
-        assertTrue(ret.contains("\n"));
+        assertEquals(1, countSubstrings(ret, Integer.toString(data_int)));
+        assertEquals(1, countSubstrings(ret, "\n"));
     }
 
     @Test
@@ -99,8 +112,8 @@ public class SimpleTest {
         dummy_output.print(data_int);
         String ret = input.toString();
         checkPreamble(ret);
-        assertTrue(ret.contains(Integer.toString(data_int)));
-        assertFalse(ret.contains("\n"));
+        assertEquals(1, countSubstrings(ret, Integer.toString(data_int)));
+        assertNotEquals(1, countSubstrings(ret, "\n"));
     }
 
     @Test
@@ -108,7 +121,7 @@ public class SimpleTest {
         dummy_output.print(data_int);
         String ret = input.toString();
         checkPreamble(ret);
-        assertTrue(ret.contains(Integer.toString(data_int)));
-        assertFalse(ret.contains("\n"));
+        assertEquals(1, countSubstrings(ret, Integer.toString(data_int)));
+        assertNotEquals(1, countSubstrings(ret, "\n"));
     }
 }

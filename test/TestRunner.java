@@ -23,7 +23,6 @@ public class TestRunner {
             // Print out any failures for this class.
             for (Failure f : r.getFailures()) {
                 System.out.println(f.toString());
-                System.out.println(f.getTrace());
             }
 
             // If r is not successful, there was at least one
@@ -39,7 +38,7 @@ public class TestRunner {
 
         // After completion, notify user if all tests passed or any failed.
         if (anyFailures) {
-            System.out.println("At least one failure, see above.");
+            System.out.println("\nAt least one failure, see above.");
         } else {
             System.out.println("ALL TESTS PASSED");
         }
